@@ -30,14 +30,17 @@ class crumbl(commands.Cog):
                 cookies = soup.find_all('div', class_="bg-white p-5 pb-0 mb-2.5 rounded-lg")
                 for b in cookies:
                     titles = b.find_all("b", {"class": "text-lg"})
+                    desc = b.find_all("p", {"class": "text-sm"})
+                    contains = b.find_all("span", {"class": "flex items-center justify-center"})
                     for b in titles:
                         embed = discord.Embed(title=b.text)
-                        thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
-                        desc = "its a cookie"
-                        contains = "nuts"
-                        embed.set_thumbnail(url=thumb_url)
-                        embed.add_field(name='Description', value=desc, inline=False)
-                        embed.set_footer(text=contains)
-                        await ctx.send(embed=embed)
+                        for b in desc:
+                            embed.add_field(name='Description', value=b.text, inline=False)
+                            for b in contains:
+                                embed.set_footer(text=b.text)
+                                thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
+                                embed.set_thumbnail(url=thumb_url)
+                                await ctx.send(embed=embed)
+
         except aiohttp.ClientError:
             await ctx.send("I was unable to get cookies.")
