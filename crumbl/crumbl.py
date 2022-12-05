@@ -35,7 +35,7 @@ class crumbl(commands.Cog):
                     for b in titles:
                         embed = discord.Embed(title=b.text)
                         for b in desc:
-                            embed.add_field(name='Description', value=b.text, inline=False)
+                            embed.add_field(name='\u200b', value=b.text, inline=False)
                             for b in thumb_url:
                                 embed.set_thumbnail(url=b['src'])
                                 await ctx.send(embed=embed)
