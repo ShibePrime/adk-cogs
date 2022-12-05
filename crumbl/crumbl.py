@@ -2,7 +2,6 @@ import aiohttp
 import asyncio
 from bs4 import BeautifulSoup
 from redbot.core import commands
-from redbot.core.utils import chat_formatting
 
 class crumbl(commands.Cog):
     """Gets all the cookies"""
@@ -28,6 +27,6 @@ class crumbl(commands.Cog):
                 rawingredients = await response.text()
                 soup = BeautifulSoup(rawingredients, "html.parser")
                 cookies = soup.find_all('div', class_="bg-white p-5 pb-0 mb-2.5 rounded-lg")
-                await ctx.send(text_to_file(cookies))
+                await ctx.send(cookies[0])
         except aiohttp.ClientError:
             await ctx.send("I was unable to get cookies.")
