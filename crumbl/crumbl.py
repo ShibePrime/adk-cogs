@@ -27,9 +27,17 @@ class crumbl(commands.Cog):
                 rawingredients = await response.text()
                 soup = BeautifulSoup(rawingredients, "html.parser")
                 cookies = soup.find_all('div', class_="bg-white p-5 pb-0 mb-2.5 rounded-lg")
-                for tag in cookies:
-                    tdTags = tag.find_all("b", {"class": "text-lg"})
-                    for tag in tdTags:
-                        await ctx.send(tag.text)
+                for b in cookies:
+                    titles = b.find_all("b", {"class": "text-lg"})
+                    for b in titles:
+                        await ctx.send(b.text)
+                        embed = discord.Embed(title=b.text)
+                        thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
+                        desc = "its a cookie"
+                        contains = "nuts"
+                        embed.set_thumbnail(url=thumb_url)
+                        embed.add_field(name='Description', value=desc, inline=False)
+                        embed.set_footer(text=contains)
+                        await ctx.send(embed=embed)
         except aiohttp.ClientError:
             await ctx.send("I was unable to get cookies.")
