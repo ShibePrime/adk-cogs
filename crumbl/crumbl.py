@@ -32,15 +32,16 @@ class crumbl(commands.Cog):
                     titles = b.find_all("b", {"class": "text-lg"})
                     desc = b.find_all("p", {"class": "text-sm"})
                     contains = b.find_all("span", {"class": "flex items-center justify-center"})
+                    thumb_url = b.find_all('img', {"class": "object-contain"})
                     for b in titles:
                         embed = discord.Embed(title=b.text)
                         for b in desc:
-                            embed.add_field(name='Description', value=b.text, inline=False)
+                            embed.add_field(value=b.text, inline=False)
                             for b in contains:
-                                embed.set_footer(text=b.text)
-                                thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
-                                embed.set_thumbnail(url=thumb_url)
-                                await ctx.send(embed=embed)
+                                embed.set_footer(name='Contains' text=b.text.split("\n"))
+                                for b in thumb_url:
+                                    embed.set_thumbnail(url=thumb_url.src)
+                                    await ctx.send(embed=embed)
 
         except aiohttp.ClientError:
             await ctx.send("I was unable to get cookies.")
