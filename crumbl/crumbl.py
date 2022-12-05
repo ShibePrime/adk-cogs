@@ -1,8 +1,6 @@
 import aiohttp
 import asyncio
 from bs4 import BeautifulSoup
-import bleach
-
 from redbot.core import commands
 
 class crumbl(commands.Cog):
@@ -26,10 +24,8 @@ class crumbl(commands.Cog):
 
         try:
             async with self.__session.get(self.__url) as response:
-                dirty = await response.text()
-                clean = bleach.clean(
-                    dirty, tags=tags, attributes=attr, strip=True)
-                soup = BeautifulSoup(clean, "html.parser")
+                rawingredients = await response.text()
+                soup = BeautifulSoup(rawingredients, "html.parser")
                 cookies = soup.find_all(
                     'div', class_="bg-white p-5 pb-0 mb-2.5 rounded-lg")
                 cookies = await response.html()
