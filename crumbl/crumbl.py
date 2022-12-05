@@ -40,7 +40,7 @@ class crumbl(commands.Cog):
                                 thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
                                 embed.set_thumbnail(url=thumb_url)
                                 await ctx.send(embed=embed)
-                                await ctx.send(b.text)
+                                await ctx.send(b)
 
         except aiohttp.ClientError:
             await ctx.send("I was unable to get cookies.")
