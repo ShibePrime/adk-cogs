@@ -27,6 +27,6 @@ class crumbl(commands.Cog):
                 rawingredients = await response.text()
                 soup = BeautifulSoup(rawingredients, "html.parser")
                 cookies = soup.find_all('div', class_="bg-white p-5 pb-0 mb-2.5 rounded-lg")
-                await ctx.send(cookies.span.text)
+                await ctx.send(cookies.find_all('b'))
         except aiohttp.ClientError:
             await ctx.send("I was unable to get cookies.")
