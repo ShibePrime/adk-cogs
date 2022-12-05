@@ -36,7 +36,7 @@ class crumbl(commands.Cog):
                     for b in titles:
                         embed = discord.Embed(title=b.text)
                         for b in desc:
-                            embed.add_field(value=b.text, inline=False)
+                            embed.add_field(name='', value=b.text, inline=False)
                             for b in contains:
                                 embed.set_footer(name='Contains', text=b.text.split("\n"))
                                 for b in thumb_url:
