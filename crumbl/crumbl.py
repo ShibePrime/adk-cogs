@@ -2,6 +2,7 @@ import aiohttp
 import asyncio
 from bs4 import BeautifulSoup
 from redbot.core import commands
+from redbot.core.utils import chat_formatting
 
 class crumbl(commands.Cog):
     """Gets all the cookies"""
