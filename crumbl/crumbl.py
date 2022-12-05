@@ -2,6 +2,7 @@ import aiohttp
 import asyncio
 from bs4 import BeautifulSoup
 from redbot.core import commands
+import discord
 
 class crumbl(commands.Cog):
     """Gets all the cookies"""
@@ -30,7 +31,6 @@ class crumbl(commands.Cog):
                 for b in cookies:
                     titles = b.find_all("b", {"class": "text-lg"})
                     for b in titles:
-                        await ctx.send(b.text)
                         embed = discord.Embed(title=b.text)
                         thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
                         desc = "its a cookie"
