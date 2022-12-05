@@ -40,7 +40,7 @@ class crumbl(commands.Cog):
                             for b in thumb_url:
                                 embed.set_thumbnail(url=b['src'])
                                 for b in contains:
-                                    embed.set_footer(text=b.text)
+                                    embed.set_footer(text"Contains " + b.text(separator=' '))
                                     await ctx.send(embed=embed)
 
                                 
