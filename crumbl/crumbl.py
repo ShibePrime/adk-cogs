@@ -37,10 +37,7 @@ class crumbl(commands.Cog):
                         for b in desc:
                             embed.add_field(name='Description', value=b.text, inline=False)
                             for b in thumb_url:
-                                thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
-                                embed.set_thumbnail(url=thumb_url)
+                                embed.set_thumbnail(url=b['src'])
                                 await ctx.send(embed=embed)
-                                await ctx.send(b['src'])
-
         except aiohttp.ClientError:
             await ctx.send("I was unable to get cookies.")
