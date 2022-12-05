@@ -40,7 +40,8 @@ class crumbl(commands.Cog):
                             for b in contains:
                                 embed.set_footer(text=b.text.split("\n"))
                                 for b in thumb_url:
-                                    embed.set_thumbnail(url=b.get('srcset'))
+                                    thumb_url="https://crumbl.video/cdn-cgi/image/width=1920,quality=80/https://crumbl.video/a5f42017-e326-401d-a892-2b683b399345_SeaSaltToffee_Aerial_Tech.png"
+                                    embed.set_thumbnail(url=thumb_url
                                     await ctx.send(embed=embed)
 
         except aiohttp.ClientError:
