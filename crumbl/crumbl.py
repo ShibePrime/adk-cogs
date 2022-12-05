@@ -38,7 +38,7 @@ class crumbl(commands.Cog):
                         for b in desc:
                             embed.add_field(name='', value=b.text, inline=False)
                             for b in contains:
-                                embed.set_footer(name='Contains', text=b.text.split("\n"))
+                                embed.set_footer(text=b.text.split("\n"))
                                 for b in thumb_url:
                                     embed.set_thumbnail(url=thumb_url.src)
                                     await ctx.send(embed=embed)
