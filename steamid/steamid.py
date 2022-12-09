@@ -32,10 +32,11 @@ class steamid(commands.Cog):
             # Parse the HTML with Beautiful Soup
             soup = BeautifulSoup(html, 'html.parser')
 
-            # Find the div element with the class '#content > dl'
-            div = soup.find('div', class_='#content')
+            # Find all div elements with the class '#content > dl'
+            divs = soup.find_all('div', class_='#content')
 
-            # Extract the text from the div and print it
-            await ctx.send(div)
+            # Loop through the divs and send their text to the Discord channel
+            for div in divs:
+                await ctx.send(div.get_text())
         except aiohttp.ClientError:
             await ctx.send("I was unable to get it")
