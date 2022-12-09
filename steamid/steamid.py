@@ -8,7 +8,7 @@ class SteamID(commands.Cog):
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self.__url: str = "https://steamid.io/lookup/"
+        self.__url: str = "https://SteamID.io/lookup/"
         self.__session = aiohttp.ClientSession()
 
     def cog_unload(self) -> None:
@@ -16,7 +16,7 @@ class SteamID(commands.Cog):
             asyncio.get_event_loop().create_task(self.__session.close())
 
     @commands.command()
-    async def steamid(self, ctx: commands.Context) -> None:
+    async def SteamID(self, ctx: commands.Context) -> None:
         await ctx.trigger_typing()
 
         try:
