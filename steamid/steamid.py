@@ -24,7 +24,7 @@ async def steamid(self, ctx: commands.Context) -> None:
 
     try:
         # Get the response from the URL
-        response = await self.__session.get(self.__url + str(ctx.))
+        response = await self.__session.get(self.__url + str(ctx))
 
         # Get the response's HTML as a string
         html = await response.text()
