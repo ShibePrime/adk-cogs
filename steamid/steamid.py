@@ -36,6 +36,6 @@ class steamid(commands.Cog):
             div = soup.find_all('div', class_='#content')
 
             # Loop through the divs and send their text to the Discord channel
-            await ctx.send(div.get_text())
+            await ctx.send(div)
         except aiohttp.ClientError:
             await ctx.send("I was unable to get it")
