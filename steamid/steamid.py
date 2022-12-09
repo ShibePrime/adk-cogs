@@ -24,7 +24,7 @@ class steamid(commands.Cog):
 
         try:
             # Get the response from the URL
-            response = await self.__session.get(self.__url + ctx)
+            response = await self.__session.get(self.__url + str(ctx))
 
             # Get the response's HTML as a string
             html = await response.text()
