@@ -33,7 +33,7 @@ class steamid(commands.Cog):
             soup = BeautifulSoup(html, 'html.parser')
 
             # Find all div elements with the class '#content > dl'
-            div = soup.find_all('div', class_='#content')
+            div = soup.find('div', class_='#content')
 
             # Loop through the divs and send their text to the Discord channel
             await ctx.send(div)
