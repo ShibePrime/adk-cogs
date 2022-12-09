@@ -33,9 +33,9 @@ class steamid(commands.Cog):
             soup = BeautifulSoup(html, 'html.parser')
 
             # Find the div element with the class '#content > dl'
-            div = soup.find('div', class_='#content > dl')
+            div = soup.find('div', class_='#content')
 
             # Extract the text from the div and print it
-            await ctx.send(div.get_text())
+            await ctx.send(div)
         except aiohttp.ClientError:
             await ctx.send("I was unable to get it")
