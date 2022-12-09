@@ -1,7 +1,7 @@
 from redbot.core.bot import Red
 
-from .steamid import steamid
+from .SteamID import SteamID
 
 
 def setup(bot: Red):
-    bot.add_cog(steamid())
+    bot.add_cog(steamID())
