@@ -4,4 +4,4 @@ from .SteamID import SteamID
 
 
 def setup(bot: Red):
-    bot.add_cog(steamID())
+    bot.add_cog(SteamID())
