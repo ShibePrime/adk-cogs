@@ -1,0 +1,15 @@
+{
+    "author": [
+        "Shibe"
+    ],
+    "install_msg": "steamid",
+    "name": "steamid",
+    "short": "Gets steamid",
+    "description": "Gets steamid cookies",
+    "requirements": [],
+    "tags": [
+        "cookies",
+        "fun"
+    ],
+    "hidden": false
+}
