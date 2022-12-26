@@ -9,7 +9,6 @@ crumbl cog
 
 The `crumbl` cog allows users to retrieve information about Crumbl Cookies through the Red Discord Bot. To use the cog, simply enter the `!crumbl` command in a Discord server where the bot has been invited. The bot will then scrape the nutrition information from the Crumbl Cookies website and send an embed with the name, description, and image of a randomly selected cookie variety. The footer of the embed will also display any allergens contained in the cookie.
 
-To install the cog, add `https://github.com/adkcogs/crumbl` to the list of repositories in the Red Discord Bot's `cogs.txt` file. Then run the `!cog install crumbl` command in the Discord server.
 
 Example usage:
 --------------
