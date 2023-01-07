@@ -14,7 +14,7 @@ class WriteNote(commands.Cog):
         # Create a dictionary with the user's name, avatar image link, and words
         data = {
             "user_name": user_name,
-            "user_avatar_url": user_avatar_url,
+            "user_avatar_url": str(user_avatar_url),
             "words": words
         }
 
