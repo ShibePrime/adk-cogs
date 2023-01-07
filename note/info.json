@@ -1,0 +1,15 @@
+{
+    "author": [
+        "Shibe"
+    ],
+    "install_msg": "note",
+    "name": "note",
+    "short": "sets note",
+    "description": "sets note",
+    "requirements": [],
+    "tags": [
+        "note",
+        "fun"
+    ],
+    "hidden": false
+}
