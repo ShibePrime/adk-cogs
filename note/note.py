@@ -6,18 +6,11 @@ class WriteNote(commands.Cog):
 
     @commands.command()
     async def writenote(self, ctx, *, words: str):
-        with open(r"/home/pi/remotescreen/notes.txt", "w") as f:
-            f.write(words + "\n")
-        await ctx.send("Note written.")
+        # Get the user's name and avatar image link
+        user_name = ctx.message.author.name
+        user_avatar_url = ctx.message.author.avatar_url
 
-    @commands.command()
-    async def readnote(self, ctx):
-        try:
-            with open(r"/home/pi/remotescreen/notes.txt", "r") as f:
-                notes = f.read()
-                if not notes:
-                    await ctx.send("No notes have been written.")
-                else:
-                    await ctx.send(notes)
-        except FileNotFoundError:
-            await ctx.send("No notes have been written.")
+        # Write the user's name, avatar image link wrapped in <img> HTML tags, and words to the file
+        with open(r"/home/pi/remotescreen/notes.txt", "w") as f:
+            f.write(f"{user_name} <img src='{user_avatar_url}'>: {words}\n")
+        await ctx.send("Note written.")
