@@ -1,16 +1,6 @@
 from redbot.core import commands
 import json
 
-class AssetEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Asset):
-            # Convert the Asset object to a dictionary
-            return {
-                "type": "Asset",
-                "value": obj.toString()
-            }
-        # Let the base class handle other objects
-        return json.JSONEncoder.default(self, obj)
 class WriteNote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -28,8 +18,7 @@ class WriteNote(commands.Cog):
             "words": words
         }
 
-        # Write the data to the file as JSON using the AssetEncoder
+        # Write the data to the file as JSON
         with open(r"/mnt/notes.json", "w") as f:
-            json.dump(data, f, cls=AssetEncoder)
+            json.dump(data, f)
         await ctx.send("Note written.")
-
