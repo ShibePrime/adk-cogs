@@ -6,7 +6,7 @@ class WriteNote(commands.Cog):
 
     @commands.command()
     async def writenote(self, ctx, *, words: str):
-        with open(r"~\home\pi\notes.txt", "w") as f:
+        with open(r"/home/pi/notes.txt", "w") as f:
             f.write(words + "\n")
         await ctx.send("Note written.")
 
