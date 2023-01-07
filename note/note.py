@@ -18,7 +18,8 @@ class WriteNote(commands.Cog):
             "words": words
         }
 
-        # Write the data to the file as JSON
+        # Write the data to the file as JSON using the AssetEncoder
         with open(r"/mnt/notes.json", "w") as f:
-            json.dump(data, f)
+            json.dump(data, f, cls=AssetEncoder)
         await ctx.send("Note written.")
+
