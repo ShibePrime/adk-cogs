@@ -1,8 +1,4 @@
 from redbot.core import commands
-import subprocess
-
-# Mount the NFS share
-subprocess.run(['mount', '-t', 'nfs4', '-o', 'user', 'pi-deskscreen:/data/compose/mounts/modules/MMM-HTMLSnippet', '/mnt'])
 class WriteNote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
