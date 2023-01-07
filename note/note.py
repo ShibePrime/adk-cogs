@@ -1,4 +1,6 @@
 from redbot.core import commands
+import json
+
 class WriteNote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -9,7 +11,14 @@ class WriteNote(commands.Cog):
         user_name = ctx.message.author.name
         user_avatar_url = ctx.message.author.avatar_url
 
-        # Write the user's name, avatar image link wrapped in <img> HTML tags, and words to the file
-        with open(r"/mnt/notes.txt", "w") as f:
-            f.write(f"{user_name} <img src='{user_avatar_url}'>: {words}\n")
+        # Create a dictionary with the user's name, avatar image link, and words
+        data = {
+            "user_name": user_name,
+            "user_avatar_url": user_avatar_url,
+            "words": words
+        }
+
+        # Write the data to the file as JSON
+        with open(r"/mnt/notes.json", "w") as f:
+            json.dump(data, f)
         await ctx.send("Note written.")
