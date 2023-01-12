@@ -1,24 +1,17 @@
 from redbot.core import commands
 import json
-import Pyrebase
+import requests
 
 class WriteNote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-        # Initialize Firebase
-        config = {
-          "apiKey": "AIzaSyBjtpGxF9ihX5DY7FCFxTJOc6QTVNvc1b8",
-          "authDomain": "shibeprime-f4fd0.firebaseapp.com",
-          "databaseURL": "https://shibeprime-f4fd0-default-rtdb.firebaseio.com",
-          "projectId": "shibeprime-f4fd0",
-          "storageBucket": "shibeprime-f4fd0.appspot.com",
-          "messagingSenderId": "31986328863",
-          "appId": "1:31986328863:web:cb25dde398d29df667fc2a",
-          "measurementId": "G-746032TVEC"
+        # Firebase Realtime Database API endpoint
+        self.firebase_url = "https://shibeprime-f4fd0-default-rtdb.firebaseio.com"
+        self.headers = {
+            "Content-Type": "application/json",
+            "Authorization": "AIzaSyBjtpGxF9ihX5DY7FCFxTJOc6QTVNvc1b8"
         }
-        self.firebase = pyrebase.initialize_app(config)
-        self.db = self.firebase.database()
 
     @commands.command()
     async def writenote(self, ctx, *, words: str):
@@ -32,7 +25,15 @@ class WriteNote(commands.Cog):
             "user_avatar_url": str(user_avatar_url),
             "words": words
         }
-        
-        # Push the data to the database
-        self.db.child("users").push(data)
-        await ctx.send("Note written.")
+
+        # Convert the dictionary to JSON
+        json_data = json.dumps(data)
+
+        # Send a POST request to the Firebase Realtime Database API
+        response = requests.post(f"{self.firebase_url}/users.json", headers=self.headers, data=json_data)
+
+        if response.status_code == 200:
+            await ctx.send("Note written.")
+        else:
+            await ctx.send("An error occurred while writing the note.")
+
