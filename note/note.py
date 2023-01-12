@@ -1,6 +1,6 @@
 from redbot.core import commands
 import json
-import pyrebase
+import Pyrebase
 
 class WriteNote(commands.Cog):
     def __init__(self, bot):
