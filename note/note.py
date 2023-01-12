@@ -19,6 +19,13 @@ class WriteNote(commands.Cog):
         user_name = ctx.message.author.name
         user_avatar_url = ctx.message.author.avatar_url
 
+        # Iterate over the message's emojis
+        for emoji in ctx.message.emojis:
+            # Check if the emoji is a custom emoji or an animated emoji
+            if emoji.is_custom_emoji() or emoji.animated:
+                # Replace the emoji with its URL
+                words = words.replace(str(emoji), emoji.url)
+                
         # Create a dictionary with the user's name, avatar image link, and words
         data = {
             "user_name": user_name,
@@ -34,6 +41,3 @@ class WriteNote(commands.Cog):
 
         if response.status_code == 200:
             await ctx.send("Note written.")
-        else:
-            await ctx.send("An error occurred while writing the note.")
-
