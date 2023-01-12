@@ -1,6 +1,7 @@
 from redbot.core import commands
 import json
 import requests
+import re
 
 class WriteNote(commands.Cog):
     def __init__(self, bot):
@@ -18,6 +19,8 @@ class WriteNote(commands.Cog):
         # Get the user's name and avatar image link
         user_name = ctx.message.author.name
         user_avatar_url = ctx.message.author.avatar_url
+        
+        words = re.sub(r'<(a)?:[a-zA-Z0-9_]+:([0-9]+)>', lambda x: "<img src='https://cdn.discordapp.com/emojis/{}.{}'>".format(x.group(2), "gif" if x.group(1) else "png"), words)
 
         # Create a dictionary with the user's name, avatar image link, and words
         data = {
