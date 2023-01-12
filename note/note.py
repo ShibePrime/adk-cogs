@@ -1,6 +1,7 @@
 from redbot.core import commands
 import json
 import requests
+import re
 
 class WriteNote(commands.Cog):
     def __init__(self, bot):
