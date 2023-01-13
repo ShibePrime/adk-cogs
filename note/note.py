@@ -17,7 +17,7 @@ class WriteNote(commands.Cog):
     @commands.command()
     async def writenote(self, ctx, *, words: str):
         # Get the user's name and avatar image link
-        user_name = ctx.message.author.name
+        user_name = ctx.message.author.display_name
         user_avatar_url = ctx.message.author.avatar_url
         
         words = re.sub(r'<(a)?:[a-zA-Z0-9_]+:([0-9]+)>', lambda x: "<img src='https://cdn.discordapp.com/emojis/{}.{}'>".format(x.group(2), "gif" if x.group(1) else "png"), words)
