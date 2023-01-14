@@ -25,7 +25,11 @@ class WriteNote(commands.Cog):
 
         # replace mentions with the mentioned user's nicknames
         for member in mentions:
-            words = words.replace(f"<@{member.id}>", member.nick)
+            if member.nick:
+                words = words.replace(f"<@{member.id}>", member.nick)
+            else:
+                words = words.replace(f"<@{member.id}>", member.name)
+
         words = re.sub(
             r"<(a)?:[a-zA-Z0-9_]+:([0-9]+)>",
             lambda x: "<img src='https://cdn.discordapp.com/emojis/{}.{}'>".format(
