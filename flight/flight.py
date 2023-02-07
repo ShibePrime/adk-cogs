@@ -1,18 +1,16 @@
-from redbot.core import commands
+from discord.ext import commands
 import json
 import requests
 import re
-
 
 class flight(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
     @commands.command()
     async def flight(self, ctx, *, words: str):
         # flightradar api free endpoint
-        url = https://data-live.flightradar24.com/zones/fcgi/feed.js
+        url = "https://data-live.flightradar24.com/zones/fcgi/feed.js"
 
         # Get the flight number from the message
         flight_number = re.search(r'\d+', words).group()
@@ -41,4 +39,3 @@ class flight(commands.Cog):
         embed.add_field(name="Flight Aircraft", value=flight_aircraft, inline=False)
         embed.add_field(name="Flight Airline", value=flight_airline, inline=False)
         await ctx.send(embed=embed)
-
