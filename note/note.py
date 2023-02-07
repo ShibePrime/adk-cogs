@@ -11,7 +11,6 @@ class WriteNote(commands.Cog):
         self.firebase_url = "https://shibeprime-f4fd0-default-rtdb.firebaseio.com"
         self.headers = {
             "Content-Type": "application/json",
-            "Authorization": "AIzaSyBjtpGxF9ihX5DY7FCFxTJOc6QTVNvc1b8",
             "uid": "1"
         }
 
