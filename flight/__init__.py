@@ -1,6 +1,6 @@
 from redbot.core import commands
 
-from .note import WriteNote
+from .flight import flight
 
 def setup(bot):
-    bot.add_cog(WriteNote(bot))
+    bot.add_cog(flight(bot))

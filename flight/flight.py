@@ -41,4 +41,4 @@ class flight(commands.Cog):
         embed.add_field(name="Flight Aircraft", value=flight_aircraft, inline=False)
         embed.add_field(name="Flight Airline", value=flight_airline, inline=False)
         await ctx.send(embed=embed)
-        
+
