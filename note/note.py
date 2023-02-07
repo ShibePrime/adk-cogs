@@ -38,4 +38,4 @@ class WriteNote(commands.Cog):
         if response.status_code == 200:
             await ctx.send("Note written.")
         else:
-            await ctx.send("An error occurred while writing the note. Error: {response.text}")
+            await ctx.send("An error occurred while writing the note. Response: " + response.text)
