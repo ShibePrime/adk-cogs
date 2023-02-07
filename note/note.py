@@ -12,7 +12,9 @@ class WriteNote(commands.Cog):
         self.headers = {
             "Content-Type": "application/json",
             "Authorization": "AIzaSyBjtpGxF9ihX5DY7FCFxTJOc6QTVNvc1b8",
+            "uid": "1"
         }
+
 
     @commands.command()
     async def writenote(self, ctx, *, words):
