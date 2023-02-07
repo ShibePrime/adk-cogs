@@ -15,6 +15,7 @@ class WriteNote(commands.Cog):
             "Authorization": "AIzaSyBjtpGxF9ihX5DY7FCFxTJOc6QTVNvc1b8",
         }
 
+
     @commands.command()
     async def writenote(self, ctx, *, words: str):
         # Get the user's name and avatar image link
@@ -53,7 +54,8 @@ class WriteNote(commands.Cog):
             f"{self.firebase_url}/users.json", headers=self.headers, data=json_data
         )
 
+
         if response.status_code == 200:
             await ctx.send("Note written.")
         else:
-            await ctx.send("An error occurred while writing the note.")
+            await ctx.send("An error occurred while writing the note." + response.text)
