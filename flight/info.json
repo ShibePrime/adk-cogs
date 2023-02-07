@@ -1,0 +1,15 @@
+{
+    "author": [
+        "Shibe"
+    ],
+    "install_msg": "flight",
+    "name": "flight",
+    "short": "reads flights",
+    "description": "reads flights",
+    "requirements": [],
+    "tags": [
+        "flight",
+        "fun"
+    ],
+    "hidden": false
+}
