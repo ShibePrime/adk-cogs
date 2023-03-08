@@ -23,8 +23,7 @@ class SteamID(commands.Cog):
             response = await self.__session.get(self.__url + str(ctx))
             html = await response.text()
             soup = BeautifulSoup(html, 'html.parser')
-            div = soup.find('div', class_='#content')
-            if div:
+            if div := soup.find('div', class_='#content'):
                 await ctx.send(div.text)
             else:
                 await ctx.send("empty")
