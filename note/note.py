@@ -33,9 +33,7 @@ class WriteNote(commands.Cog):
 
         words = re.sub(
             r"<(a)?:[a-zA-Z0-9_]+:([0-9]+)>",
-            lambda x: "<img src='https://cdn.discordapp.com/emojis/{}.{}'>".format(
-                x.group(2), "gif" if x.group(1) else "png"
-            ),
+            lambda x: f"""<img src='https://cdn.discordapp.com/emojis/{x.group(2)}.{"gif" if x.group(1) else "png"}'>""",
             words,
         )
 
@@ -58,4 +56,4 @@ class WriteNote(commands.Cog):
         if response.status_code == 200:
             await ctx.send("Note written.")
         else:
-            await ctx.send("An error occurred while writing the note." + response.text)
+            await ctx.send(f"An error occurred while writing the note.{response.text}")
