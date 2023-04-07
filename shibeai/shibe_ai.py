@@ -1,27 +1,38 @@
-from redbot.core import commands
-import aiohttp
+import asyncio
 import json
 import re
+import random
+import string
+import sys
+from redbot.core import commands
+import websockets
+
+IP_ADDRESS = "10.101.69.2"
+PORT = "8080"
+
+
+def generate_session_id():
+    charset = string.ascii_lowercase + string.digits
+    return ''.join((random.choice(charset) for _ in range(9)))
 
 
 class ShibeAI(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.url_base = "http://10.101.69.2:8080"
-        self.headers = {"user-agent": "ShibeAI/1.0"}
+        self.session_id = generate_session_id()
 
     async def send_request(self, prompt, llm_params):
-        async with aiohttp.ClientSession() as session:
+        async with websockets.connect(f"ws://{IP_ADDRESS}:{PORT}/queue/join") as websocket:
             data_list = [
                 prompt,
                 *llm_params.values()
             ]
-            j_root = {"data": data_list}
+            json_data = {"data": data_list}
 
-            async with session.post(f"{self.url_base}/run/textgen", json=j_root, headers=self.headers) as response:
-                response_text = await response.text()
-                print("Response text:", response_text)
-                result = json.loads(response_text)["data"][0]
+            await websocket.send(json.dumps(json_data))
+            response_text = await websocket.recv()
+            print("Response text:", response_text)
+            result = json.loads(response_text)["data"][0]
 
         return result[len(prompt):]
 
