@@ -1,0 +1,15 @@
+{
+    "author": [
+        "Shibe"
+    ],
+    "install_msg": "UH OH SPAGHETTI-O'S",
+    "name": "ShibeAI",
+    "short": "AI CHATBOT FOR DISCORD",
+    "description": "AI CHATBOT FOR DISCORD",
+    "requirements": [],
+    "tags": [
+        "AI",
+        "fun"
+    ],
+    "hidden": false
+}
