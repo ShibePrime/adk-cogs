@@ -4,7 +4,7 @@ import json
 import re
 
 
-class ShibeAI(commands.Cog):
+class shibeai(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.url_base = "http://10.101.69.2:7860"

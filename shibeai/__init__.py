@@ -1,7 +1,7 @@
 from redbot.core import commands
 
-from .shibeai import ShibeAI
+from .shibeai import shibeai
 
 
 def setup(bot):
-    bot.add_cog(ShibeAI(bot))
+    bot.add_cog(shibeai(bot))
