@@ -20,6 +20,7 @@ class ShibeAI(commands.Cog):
 
             async with session.post(f"{self.url_base}/run/textgen", json=j_root, headers=self.headers) as response:
                 response_text = await response.text()
+                print("Response text:", response_text)
                 result = json.loads(response_text)["data"][0]
 
         return result[len(prompt):]
