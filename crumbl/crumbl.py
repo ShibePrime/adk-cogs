@@ -4,8 +4,9 @@ from redbot.core import commands as A
 import discord as G
 class crumbl(A.Cog):
 	def __init__(A,*B,**C):super().__init__(*B,**C);A.__url='https://crumblcookies.com/nutrition';A.__session=E.ClientSession()
-	def cog_unload(A):
-		if A.__session:B.get_event_loop().create_task(A.__session.close())
+	def cog_unload(self):
+		if self.__session:
+			B.get_event_loop().create_task(self.__session.close())
 	@A.command()
 	async def crumbl(self,ctx):
 		D='class';C=ctx;await C.trigger_typing()
