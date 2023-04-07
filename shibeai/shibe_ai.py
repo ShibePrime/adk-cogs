@@ -23,7 +23,11 @@ class ShibeAI(commands.Cog):
     async def shibeai(self, ctx, *, context: str):
         session = generate_random_hash()
         response = await self.process_message(context, session)
-        await ctx.send(response)
+        if response:
+            await ctx.send(response)
+        else:
+            await ctx.send("An error occurred while processing your request.")
+
 
     async def process_message(self, context, session):
         task1 = asyncio.ensure_future(self.send_message_to_fn12(context, session))
