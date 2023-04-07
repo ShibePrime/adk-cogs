@@ -7,7 +7,7 @@ import re
 class ShibeAI(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.url_base = "http://10.101.69.2:7860"
+        self.url_base = "http://10.101.69.2:8080"
         self.headers = {"user-agent": "ShibeAI/1.0"}
 
     async def send_request(self, prompt, llm_params):
