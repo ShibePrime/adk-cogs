@@ -1,8 +1,4 @@
-# This init is required for each cog.
-# Import your main class from the cog's folder.
-from .shibeai import ai
-
+from .ai import AICommand  # Corrected to import the AICommand class
 
 def setup(bot):
-    # Add the cog to the bot.
-    bot.add_cog(ai())
+    bot.add_cog(AICommand(bot))  # Instantiate and add the cog to the bot
