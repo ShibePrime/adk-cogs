@@ -1,4 +1,4 @@
-from .ai import ai 
+from .ai import AICommand
 
 def setup(bot):
-    bot.add_cog(ai(bot)) 
+    bot.add_cog(AICommand(bot))
