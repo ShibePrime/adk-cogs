@@ -3,7 +3,7 @@ import aiohttp
 import os
 from redbot.core import commands
 
-class AICommand(commands.Cog, name="AICommand"):
+class ai(commands.Cog, name="AICommand"):
     """
     Communicate with Shibebot AI for the Thunderdoge Gaming Community
     """
