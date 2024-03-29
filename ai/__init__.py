@@ -1,6 +1,6 @@
 # This init is required for each cog.
 # Import your main class from the cog's folder.
-from .ai import ai
+from .shibeai import ai
 
 
 def setup(bot):
